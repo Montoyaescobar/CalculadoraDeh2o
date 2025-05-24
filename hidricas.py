@@ -205,6 +205,38 @@ streamlit-expander > div > div:first-child {
         margin-bottom: 1rem !important;
     }
 }
+
+/* Contenedor footer developers */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #003366;
+    font-size: 0.9rem;
+    border-top: 1px solid #00509e;
+    padding: 1rem 0 0 0;
+    margin-top: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-button button {
+    background: linear-gradient(45deg, #004080, #0074d9);
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.4rem 1.2rem;
+    box-shadow: 0 4px 15px #004080aa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.footer-button button:hover {
+    background: linear-gradient(45deg, #0074d9, #004080);
+    box-shadow: 0 6px 18px #0074d9cc;
+    transform: scale(1.05);
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -215,7 +247,7 @@ with st.container():
     st.markdown('<h1 class="title">💧 Distribución Inteligente del Agua</h1>', unsafe_allow_html=True)
     st.markdown(f'<h4 class="subtitle">Objetivo: {OBJETIVO}<br>Requerimiento: {REQUERIMIENTO}</h4>', unsafe_allow_html=True)
 
-    # Consumo promedio como dos columnas
+    # Consumo promedio
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("📈 Consumo promedio diario por persona")
     col1, col2 = st.columns(2)
@@ -227,7 +259,7 @@ with st.container():
             st.write(f"💧 {TIPOS_PERSONA[i]}: {CONSUMO_PROMEDIO[i]} L")
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # Formulario de entrada con columnas
+    # Formulario
     st.markdown('<div class="card">', unsafe_allow_html=True)
     with st.form("formulario_distribucion"):
         st.subheader("🧮 Ingrese datos para calcular la distribución")
@@ -291,7 +323,6 @@ with st.container():
         st.markdown(f"- Estimación de días que puede durar el agua: **{dias_text}**")
         st.markdown('</div>', unsafe_allow_html=True)
 
-        # Guardar historial para mostrar después
         nuevo_registro = {
             "día": dia_actual,
             "litros_disponibles": litros_disponibles,
@@ -324,5 +355,18 @@ with st.container():
             st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
+
+    # FOOTER con desarrolladores y botón contacto
+    footer_html = """
+    <div class="footer-container">
+        <div class="footer-text">
+            DEVELOPERS: JORGE MARIO MONTOYA GOMEZ, JUAN CAMILO MUÑOZ LOPEZ, LUIS ALEJANDRO MUÑOZ SOLARTE
+        </div>
+        <div class="footer-button">
+            <button onclick="window.open('mailto:soporte@tuempresa.com', '_blank')">Contactate ya!</button>
+        </div>
+    </div>
+    """
+    st.markdown(footer_html, unsafe_allow_html=True)
 
     st.markdown('</div>', unsafe_allow_html=True)
